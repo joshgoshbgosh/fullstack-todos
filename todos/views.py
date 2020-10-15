@@ -13,7 +13,7 @@ class TodoListCreateAPIView(generics.ListCreateAPIView):
 
 
 
-class TodoDetailAPIView(generics.RetrieveAPIView):
+class TodoDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Todo.objects.all()
     serializer_class = TodoSerializer
 

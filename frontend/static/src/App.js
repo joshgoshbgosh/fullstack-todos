@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
@@ -14,23 +14,24 @@ class App extends Component {
     this.removeTodo = this.removeTodo.bind(this);
   }
 
-componentDidMount(){
-  fetch('/api/v1/')
-      .then(response => response.json())
-      .then(data => this.setState({ todos: data }))
-      .catch(error => console.log('Error:', error));
+  componentDidMount(){
+    fetch('/api/v1/')
+        .then(response => response.json())
+        .then(data => this.setState({ todos: data }))
+        .catch(error => console.log('Error:', error));
 
-    }
+      }
 
-    removeTodo(id) {
-      fetch(`/api/v1/${id}/`, {
-        method: 'DELETE',
-      })
-      .then(res => res)
-      .then(res => console.log(res))
-      .then(data => this.setState({todos:data})
-      .catch(error => console.log('Error:', error))
-    }
+  removeTodo(id) {
+    fetch(`/api/v1/${id}/`, {
+      method: 'DELETE',
+    })
+    .then(res => res)
+    // .then(res => console.log(res))
+    // .then(data => this.setState({todos:data}))
+    // .catch(error => console.log('Error:', error))
+  }
+
     handleSubmit(event, data) {
           console.log('here')
           event.preventDefault();
@@ -42,7 +43,7 @@ componentDidMount(){
             body: JSON.stringify(data),
           })
           .then(response => response.json())
-          .then(data => console.log(...data.));
+          .then(data => console.log(data));
         }
 
   render() {
