@@ -26,7 +26,12 @@ class App extends Component {
     fetch(`/api/v1/${id}/`, {
       method: 'DELETE',
     })
-    .then(res => res)
+    .then(res => {
+      const todos = [...this.state.todos];
+      const index = todos.findIndex(todo => todo.id === id);
+      todos.splice(index, 1);
+      this.setState({todos});
+    })
     // .then(res => console.log(res))
     // .then(data => this.setState({todos:data}))
     // .catch(error => console.log('Error:', error))
